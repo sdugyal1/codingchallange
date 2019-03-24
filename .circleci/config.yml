@@ -51,6 +51,3 @@ workflows:
     jobs:
       - build
       - build-docker-image:
-          context: gcloud
-          requires:
-            - version
