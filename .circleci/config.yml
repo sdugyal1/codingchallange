@@ -33,3 +33,15 @@ jobs: # a collection of steps
       # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: target/spring-codingchallenge-0.1.0.jar
       # See https://circleci.com/docs/2.0/deployment-integ
+orbs:
+  gcp-gcr: circleci/gcp-gcr@1.0.0
+workflows:
+  build_and_push_image:
+    jobs:
+      - gcp-gcr/build_and_push_image_using_remote_docker:
+          context: myContext
+          google-project-id: virtual-ego-235417
+          google-compute-zone: us-central1-a
+          registry-url: us.gcr.io
+          image: codingchallenge
+          tag: latest
