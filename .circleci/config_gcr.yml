@@ -1,0 +1,13 @@
+version: 2.1
+orbs:
+  gcp-gcr: circleci/gcp-gcr@1.0.0
+workflows:
+  build_and_push_image:
+    jobs:
+      - gcp-gcr/build_and_push_image_using_remote_docker:
+          context: myContext
+          google-project-id: JFroganalytics
+          google-compute-zone: us-central1-a
+          registry-url: us.gcr.io
+          image: codingchallenge
+          tag: latest
